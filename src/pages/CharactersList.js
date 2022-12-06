@@ -1,21 +1,27 @@
 import React from "react";
-import {useQuery, gql} from "@apollo/client"
+import UseCharacters from "../hooks/useCharacters";
+import {Link} from "react-router-dom";
 
-
-const GET_CHARACTERS = gql`
-    query{
-        characters{
-        results{
-            id
-            name 
-            image 
-        }
-        }
-    }
-`
 
 export default function CharactersList(){
-    const {error, loading, data} = useQuery(GET_CHARACTERS);
+    const {error, loading, data} = UseCharacters();
 
-    console.log({error, loading, data})
+
+    if(loading) return <div>spinner...</div>;
+
+    if(error) return <div>error occur</div>;
+
+    return (
+        <div className="CharacterList">
+            {data.characters.results.map((character)=>{
+                return(
+                    <Link to={`/${character.id}`}>
+                        <img src={character.image}/>
+                        <h2>{character.name}</h2>
+                    </Link>
+
+                )
+            })}
+        </div>
+    )
  }
