@@ -1,4 +1,3 @@
-import React from 'react';
 import {gql, useQuery,} from "@apollo/client";
 
 const GET_CHARACTER = gql`
@@ -15,7 +14,7 @@ const GET_CHARACTER = gql`
         }
 `
 
-const UseCharacter = (id) => {
+const UseCharacter = (id:string) => {
     const {data, error, loading} = useQuery(GET_CHARACTER,{
         variables:{
           id,

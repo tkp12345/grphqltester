@@ -2,8 +2,16 @@ import React from 'react';
 import UseCharacter from "../hooks/useCharacter";
 import {useParams} from "react-router-dom";
 
+type Params = {
+    id: string;
+};
+
+ type episodeType = {
+    name : string
+};
+
 const Character =  () => {
-    const {id} = useParams()
+    const {id} = useParams<Params>()
     const {error, loading, data} =UseCharacter(id)
 
     console.log({error, loading, data});
@@ -17,7 +25,7 @@ const Character =  () => {
                 <h1>{data.character.name}</h1>
                 <p>{data.character.gender}</p>
                 <div className="Character-episode">
-                    {data.characters.episode.map((episode)=>{
+                    {data.characters.episode.map((episode:episodeType)=>{
                         return(
                         <div>
                             {episode.name}

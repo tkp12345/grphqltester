@@ -1,7 +1,14 @@
-import React from "react";
 import UseCharacters from "../hooks/useCharacters";
 import {Link} from "react-router-dom";
+import Pagination from "../components/Pagination";
+import React from "react";
 
+
+type CharacterType = {
+    name : string;
+    id : string;
+    image : string | undefined;
+}
 
 export default function CharactersList(){
     const {error, loading, data} = UseCharacters();
@@ -13,7 +20,8 @@ export default function CharactersList(){
 
     return (
         <div className="CharacterList">
-            {data.characters.results.map((character)=>{
+            <Pagination/>
+            {data.characters.results.map((character:CharacterType)=>{
                 return(
                     <Link to={`/${character.id}`}>
                         <img src={character.image}/>
