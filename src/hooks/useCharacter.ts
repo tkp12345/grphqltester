@@ -20,7 +20,7 @@ const UseCharacter = (id:string) => {
           id,
         },
     })
-
+//
     console.log({data, error, loading});
 
     return {
