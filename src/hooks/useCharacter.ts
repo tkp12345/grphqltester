@@ -13,7 +13,7 @@ const GET_CHARACTER = gql`
         }
         }
 `
-////
+
 const UseCharacter = (id:string) => {
     const {data, error, loading} = useQuery(GET_CHARACTER,{
         variables:{
