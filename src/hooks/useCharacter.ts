@@ -20,8 +20,9 @@ const UseCharacter = (id:string) => {
           id,
         },
     })
-//대랴3ㅈㅇㅈㅇㅈㅇㅈㅇㅈㅇㅈㅇ
-    console.log({data, error, loading});
+ 
+//대랴3ㅈㅇㅈㅇ
+     console.log({data, error, loading});
 
     return {
         data,
