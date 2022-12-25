@@ -21,7 +21,7 @@ const UseCharacter = (id:string) => {
         },
     })
  
-//대랴3ㅈㅇㅈㅇ
+//대랴3ㅈㅇㅈㅇ222
      console.log({data, error, loading});
 
     return {
