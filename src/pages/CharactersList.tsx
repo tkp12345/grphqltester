@@ -1,8 +1,11 @@
 import UseCharacters from "../hooks/useCharacters";
 import {Link} from "react-router-dom";
 import Pagination from "../components/Pagination";
-import React from "react";
+import React, {useMemo, useRef} from "react";
+import {map, Observable, Subject, tap } from 'rxjs';
+import { useReactiveEvent } from "./use-reactive-event";
 
+type EventRef<T> = readonly [(value: T) => void, Observable<T>];
 
 type CharacterType = {
     name : string;
@@ -12,10 +15,7 @@ type CharacterType = {
 
 export default function CharactersList(){
     const {error, loading, data} = UseCharacters();
-
-
     if(loading) return <div>spinner...</div>;
-
     if(error) return <div>error occur</div>;
 
     return (
